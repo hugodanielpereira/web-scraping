@@ -1,0 +1,55 @@
+The XPath syntax can seem a little convoluted at first, but it's actually extremely flexible and powerful, 
+and you can do just about anything with it. It's like the regular expressions for XML or HTML. 
+So let's take a look at a few examples. 
+
+If you want to navigate to a particular tag in XPath, you have a couple of options. You can do: 
+
+/html/body/div/h1
+
+and this will navigate to say, a title on a webpage. But it's really annoying. 
+You have to go from the top tag, passing through every intermediate tag to get to your H1. 
+What if you want to go straight to the H1 tag without passing through every tag along the way? 
+Just do:
+
+//h1
+
+The double slash allows you to select tags anywhere in the page, without starting from the top level 
+of the tree hierarchy of HTML. You can also do something like this:
+
+//div/h1
+
+and this will select only the H1 tags that are immediate children of the DIV tag. 
+
+You can also do:
+
+//div//h1
+
+In contrast, this would select an H1 tag that falls anywhere under a DIV tag, 
+regardless of whether or not it was an immediate child. 
+
+And as seen in the example from the last video, elements are selected by attribute using this at symbol, 
+@class=title. Let's bring this over into our examples. 
+
+//span[@class="title"]
+
+This will select any span tags that have the class title or the attribute the span tag is equal to the string title. 
+
+You can also select the text from the attribute of the tags themselves. 
+
+//span[@class="title"]/@id
+
+So if we wanted to select the ID attribute we do @ID, and this will select the value of the ID attribute 
+where the class attribute is title. Of course you don't usually want the attribute text or the attribute value. 
+What you want is the inner text from the tags. And as seen in the last video, you're going to be using the XPath tag selector a lot. 
+
+//span[@class="title"]/text()
+
+So that's just slash text and that's it. About 99% of the XPath selectors you will ever want to write 
+in web scraping will follow one of these patterns. So as a challenge, go back to the page we scraped the 
+title from in the last video. Pythonscraping.com/linkedin/ietf.html. 
+
+So create a scrapy project with a spider that scrapes, not just the title as in the last video. 
+but all of the important content from the page in an organized way. So you might want to look at 
+the author's name, the date, the subtitles, the text, et cetera. Look around as well. There may be 
+multiple ways to retrieve the same information. After you have a solution you like check out the next 
+video and we'll compare notes. 
